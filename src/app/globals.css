@@ -44,8 +44,50 @@ body {
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-ring: var(--sidebar-ring);
 }
+::-webkit-scrollbar {
+  width: 3px;
+  height: 5px;
+}
 
+::-webkit-scrollbar-track {
+  background-color: #f0f2f5; /* You can adjust this color for all scrollbars globally */
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 8px;
+  background-color: #66638B;
+}
+
+.table-wrapper::-webkit-scrollbar {
+  width: 3px;
+  height: 5px;
+}
+.table-wrapper::-webkit-scrollbar-track {
+  background-color: #ffff;
+  /* border-bottom-left-radius: 8px; */
+  /* border-bottom-right-radius: 8px; */
+}
+.table-wrapper::-webkit-scrollbar-thumb {
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
+  background-color: #006e1e;
+}
+.sidebar-wrapper::-webkit-scrollbar {
+  width: 3px;
+  height: 5px;
+}
+.sidebar-wrapper::-webkit-scrollbar-track {
+  background-color: #232946;
+  /* border-bottom-left-radius: 8px; */
+  /* border-bottom-right-radius: 8px; */
+}
+.sidebar-wrapper::-webkit-scrollbar-thumb {
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
+  background-color: #232946;
+}
 :root {
+  --primaryC: #66638B;
   --radius: 0.625rem;
   --background: oklch(1 0 0);
   --foreground: oklch(0.145 0 0);
@@ -81,6 +123,7 @@ body {
 }
 
 .dark {
+  --primaryC: #66638B;
   --background: oklch(0.145 0 0);
   --foreground: oklch(0.985 0 0);
   --card: oklch(0.205 0 0);

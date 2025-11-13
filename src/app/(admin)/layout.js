@@ -4,7 +4,7 @@ import Sidebar from "../Components/Sidebar";
 
 const layout = ({ children }) => {
   return (
-    <div className="min-w-full h-screen overflow-hidden">
+    <div className="min-w-full h-screen overflow-hidden ">
       <div className="max-w-[1920px] h-full w-full mx-auto flex flex-col bg-white">
         <div className="sticky top-0 z-50 ">
           <Header />

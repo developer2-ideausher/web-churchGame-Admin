@@ -15,9 +15,9 @@ const Tabs = ({ items, onTabChange }) => {
         <button
           key={item.id}
           onClick={() => handleClick(item.id)}
-          className={`px-6 py-2 mt-2 text-base transition-all ${
+          className={`px-6 py-2 mt-2 text-base transition-all w-full capitalize ${
             activeTab === item.id
-              ? "font-semibold text-[#4E4C6A] border-b-2 border-[#4E4C6A]"
+              ? "font-semibold text-[#4E4C6A] border-b border-[#4E4C6A]"
               : "font-normal text-[#999999] hover:text-[#4E4C6A]"
           }`}
         >
@@ -25,7 +25,7 @@ const Tabs = ({ items, onTabChange }) => {
         </button>
       ))}
     </div>
-  );
+  );``
 };
 
 export default Tabs;

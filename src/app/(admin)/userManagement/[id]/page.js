@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import React, { useState } from "react";
 import {
   Breadcrumb,
@@ -9,6 +9,8 @@ import {
   BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb";
 import Tabs from "@/app/Components/Tabs";
+import UserManagementTable from "@/app/Components/UserManagement/UserManagementTable";
+import StatCards from "@/app/Components/StatCards";
 
 const Page = () => {
   const tabItems = [
@@ -38,6 +40,13 @@ const Page = () => {
   //       return null;
   //   }
   // };
+   const stats = [
+    { title: 'Total Games Played', number: 2426 },
+    { title: 'Solo Walk', number: 2426 },
+    { title: 'Quick Match', number: 453 },
+    { title: 'Group Journey', number: 4563 },
+   
+  ];
   return (
     <div className="flex flex-col gap-5 mb-5">
       <Breadcrumb>
@@ -56,8 +65,10 @@ const Page = () => {
           </BreadcrumbItem>
         </BreadcrumbList>
       </Breadcrumb>
-      <div className="flex flex-col gap-2">
-        <h2>User Information</h2>
+      <div className="flex flex-col gap-1">
+        <h2 className="font-medium text-[#4E4C6A] text-base">
+          User Information
+        </h2>
         <div className="bg-white w-2/3 rounded-lg border border-[#8380B4] p-5">
           <div className="grid grid-cols-[200px_1fr] gap-y-3 gap-x-5">
             <p className="font-medium text-[#4E4C6A] text-base">User Id :</p>
@@ -98,9 +109,14 @@ const Page = () => {
           </div>
         </div>
       </div>
-      <div className="w-full ">
+      <div className="w-full flex flex-col gap-5 ">
         <Tabs items={tabItems} onTabChange={setActiveTab} />
-        {/* <div className="mt-5">{renderTable()}</div> */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+          {stats.map((stat, index) => (
+            <StatCards key={index} title={stat.title} number={stat.number} />
+          ))}
+        </div>
+        {activeTab === "gameplays" && <UserManagementTable/>}
       </div>
     </div>
   );

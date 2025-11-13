@@ -10,9 +10,14 @@ import {
   Search,
   SlidersHorizontal,
   ArrowUpDown,
-  MoreVertical,
+  
+  Ellipsis,
 } from "lucide-react";
+
+import { Eye, Pencil, Trash2 } from "lucide-react";
+
 import DataTable from "../DataTable";
+import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu";
 
 // Sample data
 const data = [
@@ -179,14 +184,49 @@ const UserManagementTable = ({ loading = false }) => {
       cell: (info) => <StatusBadge status={info.getValue()} />,
     },
     {
-      id: "actions",
-      header: "Action",
-      cell: () => (
-        <button className="p-2 hover:bg-gray-100 rounded-md transition-colors">
-          <MoreVertical className="w-4 h-4 text-gray-600" />
-        </button>
-      ),
-    },
+  id: "actions",
+  header: "Action",
+  cell: ({ row }) => {
+    const user = row.original;
+
+    return (
+      <DropdownMenu>
+        <DropdownMenuTrigger asChild>
+          <button className="p-2 hover:bg-gray-100 rounded-md transition-colors">
+            <Ellipsis color="gray" />
+          </button>
+        </DropdownMenuTrigger>
+
+        <DropdownMenuContent align="end" className="w-36">
+          <DropdownMenuItem
+            className="flex items-center gap-2 cursor-pointer"
+            onClick={() => console.log("View", user)}
+          >
+            <Eye color="gray"/>
+            View
+          </DropdownMenuItem>
+
+          <DropdownMenuItem
+            className="flex items-center gap-2 cursor-pointer"
+            onClick={() => console.log("Edit", user)}
+          >
+            <Pencil color="gray"/>
+            Edit
+          </DropdownMenuItem>
+
+          <DropdownMenuItem
+            className="flex items-center gap-2 cursor-pointer text-red-700"
+            onClick={() => console.log("Delete", user)}
+          >
+            <Trash2  color="red"/>
+            Delete
+          </DropdownMenuItem>
+        </DropdownMenuContent>
+      </DropdownMenu>
+    );
+  },
+}
+
   ];
 
   const table = useReactTable({
